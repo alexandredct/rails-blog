@@ -4,10 +4,8 @@ Rails.application.routes.draw do
   #For Home Page
   root "articles#index"
 
-  #Default for Article Controller
-  get "/articles", to: "articles#index"
-
-  #Show a specific article
-  get "/articles/:id", to: "articles#show"
+  #Whenever we have such a combination of routes, controller actions, and views that work together to perform CRUD operations on an entity, we call that entity a resource.
+  #@see https://api.rubyonrails.org/v6.1.3.1/classes/ActionDispatch/Routing/Mapper/Resources.html#method-i-resources
+  resources :articles
 
 end
