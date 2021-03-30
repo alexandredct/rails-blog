@@ -12,14 +12,25 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(title: "...", body: "...")
+    @article = Article.new(article_params)
 
     if @article.save
-    	#redirect_to will cause the browser to make a new request. Use after mutating the database ou application state
+    	#validations are checked
+    	#"redirect_to" will cause the browser to make a new request. Use it after mutating the database ou application state
       redirect_to @article
     else
-    	#render renders the specified view for the current request.
+    	#validations are NOT checked. There's NO attempt to save @article. There will be no error messages
+    	#"render" renders the specified view for the current request.
       render :new
     end
   end
+
+
+  #Using Strong Parameters for creating a single Hash that contains all the parameters values
+  #@see https://guides.rubyonrails.org/action_controller_overview.html#strong-parameters
+  private
+    def article_params
+      params.require(:article).permit(:title, :body)
+    end
+
 end
