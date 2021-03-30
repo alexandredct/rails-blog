@@ -10,3 +10,31 @@
   <% #The "method" and "data" options are powered by a feature of Rails called Unobtrusive JavaScript (UJS). The JavaScript file that implements these behaviors is included by default in fresh Rails applications. %>
   <% #@see https://guides.rubyonrails.org/working_with_javascript_in_rails.html %>
 </ul>
+
+<h2>Comments</h2>
+<% @article.comments.each do |comment| %>
+  <p>
+    <strong>Commenter:</strong>
+    <%= comment.commenter %>
+  </p>
+
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.body %>
+  </p>
+<% end %>
+
+<h2>Add a comment:</h2>
+<%= form_with model: [ @article, @article.comments.build ] do |form| %>
+  <p>
+    <%= form.label :commenter %><br>
+    <%= form.text_field :commenter %>
+  </p>
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
