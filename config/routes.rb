@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   #Whenever we have such a combination of routes, controller actions, and views that work together to perform CRUD operations on an entity, we call that entity a resource.
   #@see https://api.rubyonrails.org/v6.1.3.1/classes/ActionDispatch/Routing/Mapper/Resources.html#method-i-resources
   #@see https://guides.rubyonrails.org/routing.html
-  resources :articles
+  resources :articles do
+  	#nested resource
+  	resources :comments
+  end
 
 end

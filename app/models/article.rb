@@ -4,4 +4,7 @@ class Article < ApplicationRecord
 	#@see https://guides.rubyonrails.org/active_record_validations.html#working-with-validation-errors
   validates :title, presence: true
   validates :body, presence: true, length: { minimum: 10 }
+
+  #@see https://guides.rubyonrails.org/association_basics.html
+  has_many :comments
 end
