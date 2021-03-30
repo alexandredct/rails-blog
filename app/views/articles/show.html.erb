@@ -4,4 +4,9 @@
 
 <ul>
   <li><%= link_to "Edit", edit_article_path(@article) %></li>
+  <li><%= link_to "Destroy", article_path(@article),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %></li>
+  <% #The "method" and "data" options are powered by a feature of Rails called Unobtrusive JavaScript (UJS). The JavaScript file that implements these behaviors is included by default in fresh Rails applications. %>
+  <% #@see https://guides.rubyonrails.org/working_with_javascript_in_rails.html %>
 </ul>

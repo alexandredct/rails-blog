@@ -39,6 +39,15 @@ class ArticlesController < ApplicationController
     end
   end
 
+	#maps maps DELETE /articles/:id requests
+  def destroy
+    @article = Article.find(params[:id])
+    @article.destroy
+
+    redirect_to root_path
+  end
+
+
 
   #Using Strong Parameters for creating a single Hash that contains all the parameters values
   #@see https://guides.rubyonrails.org/action_controller_overview.html#strong-parameters
